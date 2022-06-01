@@ -1,5 +1,4 @@
-import { Client } from '@managed-components/types'
-import { MCEvent } from '@managed-components/types'
+import { Client, MCEvent } from '@managed-components/types'
 import { getToolRequest } from './requestBuilder'
 
 const isInt = (num: string) => !isNaN(parseInt(num))

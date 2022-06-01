@@ -1,5 +1,4 @@
-import { Client } from '@managed-components/types'
-import { MCEvent } from '@managed-components/types'
+import { Client, MCEvent } from '@managed-components/types'
 import { getEcommerceParams } from './ecommerce'
 
 const KNOWN_NON_ECOMMMERCE_KEYS = [
