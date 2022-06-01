@@ -4,6 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
+    "lint": "eslint --ext .ts,.js, src",
+    "lint:fix": "eslint --ext .ts,.js, src --fix",
     "build": "npm run typecheck && node esbuild.js",
     "typecheck": "tsc --project tsconfig.build.json --noEmit",
     "test": "vitest --globals"
@@ -25,7 +27,11 @@
   "homepage": "https://github.com/managed-components/google-analytics#readme",
   "devDependencies": {
     "@managed-components/types": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.27.0",
     "esbuild": "^0.14.42",
+    "eslint": "^8.16.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "ts-node": "^10.8.0",
     "typescript": "^4.7.2",
     "vitest": "^0.13.0"
