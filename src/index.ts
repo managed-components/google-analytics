@@ -29,13 +29,13 @@ const sendGA3Event = function (
 }
 
 export default async function (manager: Manager, settings: ComponentSettings) {
-  manager.addEventListener('event', (event) => sendGA3Event(event, settings))
+  manager.addEventListener('event', event => sendGA3Event(event, settings))
 
-  manager.addEventListener('pageview', (event) => {
+  manager.addEventListener('pageview', event => {
     sendGA3Event(event, settings)
   })
 
-  manager.addEventListener('ecommerce', (event) => {
+  manager.addEventListener('ecommerce', event => {
     sendGA3Event(event, settings, true)
   })
 }

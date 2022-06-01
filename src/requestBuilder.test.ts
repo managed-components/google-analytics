@@ -19,7 +19,7 @@ describe('getToolRequest', () => {
     fetch: vi.fn(),
     execute: vi.fn(),
     return: vi.fn(),
-    get: vi.fn().mockImplementation((key) => {
+    get: vi.fn().mockImplementation(key => {
       const cookies: Record<string, string> = {
         _ga: 'GA1.1.2006998272.1617012296',
         _gid: 'GA1.2.1520407294.1621950425',
