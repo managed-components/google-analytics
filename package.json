@@ -31,6 +31,7 @@
   "devDependencies": {
     "@managed-components/types": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^5.27.0",
+    "all-contributors-cli": "^6.20.0",
     "esbuild": "^0.14.42",
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",
