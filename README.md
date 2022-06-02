@@ -16,7 +16,7 @@ Find out more about Managed Components [here](https://blog.cloudflare.com/zaraz-
 
 ## 📝 License
 
-Licensed under the [BSD-3-Clause License](./LICENSE).
+Licensed under the [Apache License](./LICENSE).
 
 ## 💜 Thanks
 
