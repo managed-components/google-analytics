@@ -40,13 +40,6 @@ Find out more about Managed Components [here](https://blog.cloudflare.com/zaraz-
 
 `dp` is the path portion of the page URL. Should begin with `/` [Learn more](https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#dp)
 
-    "dl": {
-      "displayName": "Document Location",
-      "helpText": "Use this parameter to send the full URL of the page on which content resides. Defaults to current full URL. [Learn more](https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#dl)",
-      "displayWidget": "text",
-      "validations": [{ "type": "string" }]
-    },
-
 ### Document Location `string`
 
 `dl` is used send the full URL of the page on which content resides. Defaults to current full URL. [Learn more](https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#dl)
@@ -81,11 +74,11 @@ Find out more about Managed Components [here](https://blog.cloudflare.com/zaraz-
 
 ### Content Groups `string`
 
-`cg{1..10}` are used to collect pages into common themes in Google Analytics. [Learn more](https://support.google.com/analytics/answer/2853423?hl=en)
+`cg{1..10}` is used to collect pages into common themes in Google Analytics. [Learn more](https://support.google.com/analytics/answer/2853423?hl=en)
 
 ### Custom Dimensions `string`
 
-`cd{1..100}` are used to send non-standard types of information to Google Analytics. [Learn more](https://support.google.com/analytics/answer/2709828?hl=en)
+`cd{1..100}` is used to send non-standard types of information to Google Analytics. [Learn more](https://support.google.com/analytics/answer/2709828?hl=en)
 
 ## 📝 License
 
