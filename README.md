@@ -18,6 +18,75 @@ Find out more about Managed Components [here](https://blog.cloudflare.com/zaraz-
 2. Install dependencies with `npm i`
 3. Run unit test watcher with `npm run test:dev`
 
+## 🧱 Fields Description
+
+### Tracking ID `string` _required_
+
+`tid` is the unique identifier of your Google Analytics account. [Learn more](https://support.google.com/analytics/thread/13109681?hl=en)"
+
+### Hit Type `string` _required_
+
+`t` the type of hit can be `Event` or `Page view` and its value will determine how Google Analytics will process it. [Learn more](https://support.google.com/analytics/answer/6086082?hl=en)
+
+### Event Action `string` _required_
+
+`ea` will be sent as Event Action to Google Analytics. [Learn more](https://support.google.com/analytics/answer/1033068?hl=en)
+
+### Google Optimize Experiment `string`
+
+`exp` is used to run Google Optimize server-side experiments. It does precisely what ga(\"set\", \"exp\", \"$experimentId.$variationId\") would do. [Learn more](https://developers.google.com/optimize/devguides/experiments)
+
+### Document Path `string`
+
+`dp` is the path portion of the page URL. Should begin with `/` [Learn more](https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#dp)
+
+    "dl": {
+      "displayName": "Document Location",
+      "helpText": "Use this parameter to send the full URL of the page on which content resides. Defaults to current full URL. [Learn more](https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#dl)",
+      "displayWidget": "text",
+      "validations": [{ "type": "string" }]
+    },
+
+### Document Location `string`
+
+`dl` is used send the full URL of the page on which content resides. Defaults to current full URL. [Learn more](https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#dl)
+
+### Document Host Name `string`
+
+`dh` specifies the hostname from which content was hosted. [Learn more](https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#dh)
+
+### Event Category `string`
+
+`ec` will be sent as Event Category to Google Analytics. [Learn more](https://support.google.com/analytics/answer/1033068?hl=en)
+
+### Event Label `string`
+
+`el` will be sent as Event Label to Google Analytics. [Learn more](https://support.google.com/analytics/answer/1033068?hl=en)
+
+### Event Value `string`
+
+`ev` will be sent as Event Value to Google Analytics. [Learn more](https://support.google.com/analytics/answer/1033068?hl=en)
+
+### User ID `string`
+
+`uid` is intended to be a known identifier for a user provided by the site owner/library user. It must not itself be PII (personally identifiable information). [Learn more](https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#uid)
+
+### Non-interaction `boolean`
+
+`ni` Non-interaction events are not taken into account when Google Analytics calculates bounces and session duration. [Learn more](https://support.google.com/analytics/answer/1033068?hl=en#NonInteractionEvents).
+
+### Anonymize Originating IP Address `boolean`
+
+`aip` will anonymize the visitor IP address in your Google Analytics UI. [Learn more](https://support.google.com/analytics/answer/2763052?hl=en)
+
+### Content Groups `string`
+
+`cg{1..10}` are used to collect pages into common themes in Google Analytics. [Learn more](https://support.google.com/analytics/answer/2853423?hl=en)
+
+### Custom Dimensions `string`
+
+`cd{1..100}` are used to send non-standard types of information to Google Analytics. [Learn more](https://support.google.com/analytics/answer/2709828?hl=en)
+
 ## 📝 License
 
 Licensed under the [Apache License](./LICENSE).
