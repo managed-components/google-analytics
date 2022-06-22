@@ -18,11 +18,15 @@ Find out more about Managed Components [here](https://blog.cloudflare.com/zaraz-
 2. Install dependencies with `npm i`
 3. Run unit test watcher with `npm run test:dev`
 
-## 🧱 Fields Description
+## ⚙️ Tool Settings
+
+> Settings are used to configure the tool in a Component Manager config file
 
 ### Tracking ID `string` _required_
 
 `tid` is the unique identifier of your Google Analytics account. [Learn more](https://support.google.com/analytics/thread/13109681?hl=en)"
+
+## 🧱 Fields Description
 
 ### Hit Type `string` _required_
 
