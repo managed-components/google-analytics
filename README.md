@@ -24,8 +24,7 @@ Find out more about Managed Components [here](https://blog.cloudflare.com/zaraz-
 
 ### Tracking ID `string` _required_
 
-p
-`tid` is the unique identifier of your Google Analytics account. [Learn more](https://support.google.com/analytics/thread/13109681?hl=en)"
+`tid` is the unique identifier of your Google Analytics account. [Learn more](https://support.google.com/analytics/thread/13109681?hl=en)
 
 ## 🧱 Fields Description
 
