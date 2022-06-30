@@ -12,8 +12,8 @@
       "required": false
     },
     "execute_unsafe_scripts": {
-      "description": "Required for use of GA Audiences",
-      "required": true
+      "description": "Required for use of Google Analytics Audiences",
+      "required": false
     }
   }
 }
