@@ -14,6 +14,10 @@
     "execute_unsafe_scripts": {
       "description": "Required for use of Google Analytics Audiences",
       "required": false
+    },
+    "access_client_kv": {
+      "description": "",
+      "required": true
     }
   }
 }
