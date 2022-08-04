@@ -1,5 +1,4 @@
 import { ComponentSettings, MCEvent } from '@managed-components/types'
-import crypto from 'crypto'
 
 const getRandomInt = () => Math.floor(2147483647 * Math.random())
 
