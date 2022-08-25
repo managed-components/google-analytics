@@ -99,7 +99,6 @@ export const getEcommerceParams = (event: MCEvent) => {
   const requestBody: Record<string, unknown> = {}
 
   requestBody.ec = 'ecommerce'
-  requestBody.t = 'event'
 
   const eventName = event.name || ''
   if (EEC_MAP[eventName]) {

@@ -11,14 +11,14 @@ const getFullURL = (requestPayload: any) => {
 }
 
 const sendGA3Event = function (
+  eventType: string,
   event: MCEvent,
-  settings: ComponentSettings,
-  ecommerce = false
+  settings: ComponentSettings
 ) {
-  const requestPayload = getToolRequest(event, settings)
+  const requestPayload = getToolRequest(eventType, event, settings)
 
   let ecommerceParams = {}
-  ecommerce && (ecommerceParams = getEcommerceParams(event))
+  eventType === 'ecommerce' && (ecommerceParams = getEcommerceParams(event))
 
   const finalURL = getFullURL({ ...requestPayload, ...ecommerceParams })
   fetch(finalURL)
@@ -29,13 +29,15 @@ const sendGA3Event = function (
 }
 
 export default async function (manager: Manager, settings: ComponentSettings) {
-  manager.addEventListener('event', event => sendGA3Event(event, settings))
+  manager.addEventListener('event', event =>
+    sendGA3Event('event', event, settings)
+  )
 
   manager.addEventListener('pageview', event => {
-    sendGA3Event(event, settings)
+    sendGA3Event('pageview', event, settings)
   })
 
   manager.addEventListener('ecommerce', event => {
-    sendGA3Event(event, settings, true)
+    sendGA3Event('ecommerce', event, settings, true)
   })
 }
