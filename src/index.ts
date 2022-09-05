@@ -38,6 +38,6 @@ export default async function (manager: Manager, settings: ComponentSettings) {
   })
 
   manager.addEventListener('ecommerce', event => {
-    sendGA3Event('ecommerce', event, settings, true)
+    sendGA3Event('ecommerce', event, settings)
   })
 }
