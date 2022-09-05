@@ -58,7 +58,7 @@ export const gaDoubleClick = (
     // Trigger the request to the local Google domain too
     clientJSAudience += `fetch("${finalAudienceURL}".replace("www.google.com", "www.google."+domain.slice(2)));`
     clientJSAudience += `}}`
-    clientJSAudience += `},x.send();`
+    clientJSAudience += `},x.send()`
     client.execute(clientJSAudience)
   } else {
     // If no GA-Audiences, just trigger DoubleClick normally
