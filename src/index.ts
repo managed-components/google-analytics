@@ -18,7 +18,9 @@ const sendGA3Event = function (
   const requestPayload = getToolRequest(eventType, event, settings)
 
   let ecommerceParams = {}
-  eventType === 'ecommerce' && (ecommerceParams = getEcommerceParams(event))
+  if (eventType === 'ecommerce') {
+    ecommerceParams = getEcommerceParams(event)
+  }
 
   const finalURL = getFullURL({ ...requestPayload, ...ecommerceParams })
   fetch(finalURL)
