@@ -96,10 +96,10 @@ const EEC_MAP: Record<string, Record<string, string | string[]>> = {
 
 export const getEcommerceParams = (event: MCEvent) => {
   const { payload } = event
+  const ecommerceData = payload.ecommerce
   const requestBody: Record<string, unknown> = {}
 
   requestBody.ec = 'ecommerce'
-  requestBody.t = 'event'
 
   const eventName = event.name || ''
   if (EEC_MAP[eventName]) {
@@ -112,13 +112,15 @@ export const getEcommerceParams = (event: MCEvent) => {
       if (Array.isArray(ctxMap)) {
         // competing possible dynamic values, override them in order
         for (const possibleVal of ctxMap) {
-          if (payload[possibleVal.substr(9)]) {
-            requestBody[key] = payload[possibleVal.substr(9)]
+          if (ecommerceData[possibleVal.substr(9)]) {
+            requestBody[key] = ecommerceData[possibleVal.substr(9)]
           }
         }
       } else if (typeof ctxMap === 'object') {
         // must be products
-        for (const [index, product] of (payload?.products || []).entries()) {
+        for (const [index, product] of (
+          ecommerceData?.products || []
+        ).entries()) {
           for (const suffix of Object.keys(ctxMap)) {
             if (product[ctxMap[suffix]]) {
               requestBody[key + (index + 1) + suffix] = product[ctxMap[suffix]]
@@ -126,8 +128,8 @@ export const getEcommerceParams = (event: MCEvent) => {
           }
         }
       } else if (ctxMap.startsWith('__client.')) {
-        if (payload[ctxMap.substr(9)])
-          requestBody[key] = payload[ctxMap.substr(9)]
+        if (ecommerceData[ctxMap.substr(9)])
+          requestBody[key] = ecommerceData[ctxMap.substr(9)]
       } else {
         requestBody[key] = ctxMap
       }

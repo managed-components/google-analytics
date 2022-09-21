@@ -40,7 +40,7 @@ describe('getToolRequest', () => {
   }
 
   it('return request object ready to be used for GA tracking', () => {
-    const rawParams = getToolRequest(mockEvent, mockSettings)
+    const rawParams = getToolRequest('pageview', mockEvent, mockSettings)
     const expectedNonRandomInts = {
       cd1: 'myCustomDimension123',
       ec: 'testCategory',

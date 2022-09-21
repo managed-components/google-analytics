@@ -5,7 +5,7 @@ export const gaDoubleClick = (
   settings: ComponentSettings,
   finalUrl: string
 ) => {
-  const { payload, client } = event
+  const { client } = event
   const analyticsURL = new URL(finalUrl)
   const jid = analyticsURL.searchParams.get('jid')
   const gjid = analyticsURL.searchParams.get('gjid')
@@ -19,7 +19,7 @@ export const gaDoubleClick = (
     _r: 3,
     v: 1,
     _v: 'j86',
-    tid: payload.tid,
+    tid: settings.tid,
     cid: cid,
     jid: jid,
     gjid: gjid,
@@ -58,7 +58,7 @@ export const gaDoubleClick = (
     // Trigger the request to the local Google domain too
     clientJSAudience += `fetch("${finalAudienceURL}".replace("www.google.com", "www.google."+domain.slice(2)));`
     clientJSAudience += `}}`
-    clientJSAudience += `},x.send();`
+    clientJSAudience += `},x.send()`
     client.execute(clientJSAudience)
   } else {
     // If no GA-Audiences, just trigger DoubleClick normally

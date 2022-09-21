@@ -2,10 +2,14 @@ import { ComponentSettings, MCEvent } from '@managed-components/types'
 
 const getRandomInt = () => Math.floor(2147483647 * Math.random())
 
-export const getToolRequest = (event: MCEvent, settings: ComponentSettings) => {
+export const getToolRequest = (
+  eventType: string,
+  event: MCEvent,
+  settings: ComponentSettings
+) => {
   const { client, payload } = event
   const requestBody = {
-    t: 'pageview',
+    t: eventType === 'pageview' ? eventType : 'event',
     v: 1,
     jid: getRandomInt(),
     gjid: getRandomInt(),
