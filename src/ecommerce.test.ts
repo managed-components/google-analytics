@@ -1,5 +1,6 @@
 import { Client, MCEvent } from '@managed-components/types'
 import { getEcommerceParams } from './ecommerce'
+import { getToolRequest } from './requestBuilder'
 
 const KNOWN_NON_ECOMMMERCE_KEYS = [
   '_gid', // google id
@@ -27,6 +28,7 @@ const KNOWN_NON_ECOMMMERCE_KEYS = [
   'v', // version
   'vp', // viewport
   'z', // random number
+  't', // event type
 ]
 
 describe('EEC getToolRequest', () => {
@@ -34,51 +36,53 @@ describe('EEC getToolRequest', () => {
   mockEvent.client = {} as unknown as Client
   mockEvent.name = 'Product Added'
   mockEvent.payload = {
-    cart_id: 'skdjsidjsdkdj29j',
-    product_id: '507f1f77bcf86cd799439011',
-    sku: 'G-32',
-    category: 'Games',
-    name: 'Monopoly: 3rd Edition',
-    brand: 'Hasbro',
-    currency: 'USD',
-    variant: '200 pieces',
-    price: 18.99,
-    quantity: 1,
-    coupon: 'MAYDEALS',
-    step: 3,
-    shipping: 12,
-    revenue: 21.99,
-    total: 18.99,
-    tax: 4,
-    list_id: 'totally unique list id',
-    position: 'way up top',
-    url: 'https://www.example.com/product/path',
-    image_url: 'https://www.example.com/product/path.jpg',
-    products: [
-      {
-        brand: 'Hasbro',
-        product_id: '507f1f77bcf86cd799439011',
-        sku: '45790-32',
-        name: 'Monopoly: 3rd Edition',
-        quantity: 1,
-        price: 19,
-        category: 'Games',
-        variant: '200 pieces',
-        url: 'https://www.example.com/product/path',
-        image_url: 'https://www.example.com/product/path.jpg',
-      },
-      {
-        variant: '200 pieces',
-        brand: 'Hasbro',
-        product_id: '505bd76785ebb509fc183733',
-        sku: '46493-32',
-        name: 'Uno Card Game',
-        quantity: 2,
-        price: 3,
-        position: 2,
-        category: 'Games',
-      },
-    ],
+    ecommerce: {
+      cart_id: 'skdjsidjsdkdj29j',
+      product_id: '507f1f77bcf86cd799439011',
+      sku: 'G-32',
+      category: 'Games',
+      name: 'Monopoly: 3rd Edition',
+      brand: 'Hasbro',
+      currency: 'USD',
+      variant: '200 pieces',
+      price: 18.99,
+      quantity: 1,
+      coupon: 'MAYDEALS',
+      step: 3,
+      shipping: 12,
+      revenue: 21.99,
+      total: 18.99,
+      tax: 4,
+      list_id: 'totally unique list id',
+      position: 'way up top',
+      url: 'https://www.example.com/product/path',
+      image_url: 'https://www.example.com/product/path.jpg',
+      products: [
+        {
+          brand: 'Hasbro',
+          product_id: '507f1f77bcf86cd799439011',
+          sku: '45790-32',
+          name: 'Monopoly: 3rd Edition',
+          quantity: 1,
+          price: 19,
+          category: 'Games',
+          variant: '200 pieces',
+          url: 'https://www.example.com/product/path',
+          image_url: 'https://www.example.com/product/path.jpg',
+        },
+        {
+          variant: '200 pieces',
+          brand: 'Hasbro',
+          product_id: '505bd76785ebb509fc183733',
+          sku: '46493-32',
+          name: 'Uno Card Game',
+          quantity: 2,
+          price: 3,
+          position: 2,
+          category: 'Games',
+        },
+      ],
+    },
   }
 
   it('returns correct request object values for a "Product Added" event', () => {
@@ -86,7 +90,6 @@ describe('EEC getToolRequest', () => {
     const rawParams = getEcommerceParams(mockEvent)
     const expectedEcommerceNonRandomInts = {
       ea: 'add_to_cart',
-      t: 'event',
       cu: 'USD',
       ec: 'ecommerce',
       pa: 'add',
