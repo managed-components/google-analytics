@@ -80,5 +80,6 @@ export const getToolRequest = (
     }
   })
 
-  return { ...requestBody, ...payload }
+  const { ecommerce, ...nonEcommercePayload } = payload
+  return { ...requestBody, ...nonEcommercePayload }
 }
