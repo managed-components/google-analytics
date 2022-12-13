@@ -3,6 +3,12 @@ import { getToolRequest } from './requestBuilder'
 
 const isInt = (num: string) => !isNaN(parseInt(num))
 
+vi.stubGlobal('crypto', {
+  randomUUID: () => {
+    return '2006998272.1617012296'
+  },
+})
+
 describe('getToolRequest', () => {
   const mockEvent = new Event('pageview') as MCEvent
   mockEvent.client = {
@@ -20,7 +26,6 @@ describe('getToolRequest', () => {
     return: vi.fn(),
     get: vi.fn().mockImplementation(key => {
       const cookies: Record<string, string> = {
-        _ga: 'GA1.1.2006998272.1617012296',
         _gid: 'GA1.2.1520407294.1621950425',
       }
       return cookies[key]
