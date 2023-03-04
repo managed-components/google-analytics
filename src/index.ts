@@ -10,36 +10,37 @@ const getFullURL = (requestPayload: any) => {
   return BASE_URL + params
 }
 
-const sendGA3Event = function (
-  eventType: string,
-  event: MCEvent,
-  settings: ComponentSettings
-) {
-  const requestPayload = getToolRequest(eventType, event, settings)
-
-  let ecommerceParams = {}
-  if (eventType === 'ecommerce') {
-    ecommerceParams = getEcommerceParams(event)
-  }
-
-  const finalURL = getFullURL({ ...requestPayload, ...ecommerceParams })
-  fetch(finalURL)
-
-  if (settings['ga-audiences'] || settings['ga-doubleclick']) {
-    gaDoubleClick(event, settings, finalURL)
-  }
-}
-
 export default async function (manager: Manager, settings: ComponentSettings) {
+  const sendGA3Event = function (
+    eventType: string,
+    manager: Manager,
+    event: MCEvent,
+    settings: ComponentSettings
+  ) {
+    const requestPayload = getToolRequest(eventType, event, settings)
+
+    let ecommerceParams = {}
+    if (eventType === 'ecommerce') {
+      ecommerceParams = getEcommerceParams(event)
+    }
+
+    const finalURL = getFullURL({ ...requestPayload, ...ecommerceParams })
+    manager.fetch(finalURL)
+
+    if (settings['ga-audiences'] || settings['ga-doubleclick']) {
+      gaDoubleClick(event, settings, finalURL)
+    }
+  }
+
   manager.addEventListener('event', event =>
-    sendGA3Event('event', event, settings)
+    sendGA3Event('event', manager, event, settings)
   )
 
   manager.addEventListener('pageview', event => {
-    sendGA3Event('pageview', event, settings)
+    sendGA3Event('pageview', manager, event, settings)
   })
 
   manager.addEventListener('ecommerce', event => {
-    sendGA3Event('ecommerce', event, settings)
+    sendGA3Event('ecommerce', manager, event, settings)
   })
 }
