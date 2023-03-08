@@ -13,7 +13,6 @@ const getFullURL = (requestPayload: any) => {
 export default async function (manager: Manager, settings: ComponentSettings) {
   const sendGA3Event = function (
     eventType: string,
-    manager: Manager,
     event: MCEvent,
     settings: ComponentSettings
   ) {
@@ -33,14 +32,14 @@ export default async function (manager: Manager, settings: ComponentSettings) {
   }
 
   manager.addEventListener('event', event =>
-    sendGA3Event('event', manager, event, settings)
+    sendGA3Event('event', event, settings)
   )
 
   manager.addEventListener('pageview', event => {
-    sendGA3Event('pageview', manager, event, settings)
+    sendGA3Event('pageview', event, settings)
   })
 
   manager.addEventListener('ecommerce', event => {
-    sendGA3Event('ecommerce', manager, event, settings)
+    sendGA3Event('ecommerce', event, settings)
   })
 }
