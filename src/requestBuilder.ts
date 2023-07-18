@@ -26,7 +26,10 @@ export const getToolRequest = (
   } as any
 
   if (client.get('_ga')) {
-    requestBody['cid'] = client.get('_ga').split('.').slice(-2).join('.')
+    requestBody['cid'] = (client.get('_ga') as string)
+      .split('.')
+      .slice(-2)
+      .join('.')
   } else {
     const uid = crypto.randomUUID()
     requestBody['cid'] = uid
@@ -34,7 +37,10 @@ export const getToolRequest = (
   }
 
   if (client.get('_gid')) {
-    requestBody['_gid'] = client.get('_gid').split('.').slice(-2).join('.')
+    requestBody['_gid'] = (client.get('_gid') as string)
+      .split('.')
+      .slice(-2)
+      .join('.')
   }
 
   /* Start of gclid treating */
@@ -53,7 +59,7 @@ export const getToolRequest = (
     }
   }
   if (client.get('_gcl_aw')) {
-    requestBody.gclid = client.get('_gcl_aw').split('.').pop()
+    requestBody.gclid = (client.get('_gcl_aw') as string).split('.').pop()
   }
   if (client.get('gclid')) {
     requestBody.gclid = client.get('gclid')
