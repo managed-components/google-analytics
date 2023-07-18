@@ -1,6 +1,5 @@
 import { Client, MCEvent } from '@managed-components/types'
 import { getEcommerceParams } from './ecommerce'
-import { getToolRequest } from './requestBuilder'
 
 const KNOWN_NON_ECOMMMERCE_KEYS = [
   '_gid', // google id
