@@ -3,11 +3,13 @@ import { getToolRequest } from './requestBuilder'
 
 const isInt = (num: string) => !isNaN(parseInt(num))
 
-vi.stubGlobal('crypto', {
-  randomUUID: () => {
-    return '2006998272.1617012296'
-  },
-})
+if (!global.crypto) {
+  vi.stubGlobal('crypto', {
+    randomUUID: () => {
+      return '2006998272.1617012296'
+    },
+  })
+}
 
 describe('getToolRequest', () => {
   const mockEvent = new Event('pageview') as MCEvent
